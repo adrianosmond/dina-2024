@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import Divider from "./Divider.astro";
+import Text from "./Text.astro";
+
+type ClueSection = string | ImageMetadata;
+
+export type Props = {
+  number: number;
+  sections: ClueSection[][];
+  position: string;
+};
+
+export const DIVIDER = "__DIVIDER__";
+
+const { number, sections, position } = Astro.props;
+---
+
+<div>
+  <h2 class="mb-4 text-9xl">{number}.</h2>
+  <div class="pl-24">
+    {
+      sections.map((clues, sectionIdx) => (
+        <div class="mb-16 flex gap-4">
+          {clues.map((clue) => {
+            if (typeof clue === "string") {
+              return (
+                <Text>
+                  {clue.split("\n").map((str, idx) => (
+                    <Fragment>
+                      {idx !== 0 && <br />}
+                      {str}
+                    </Fragment>
+                  ))}
+                </Text>
+              );
+            }
+            return (
+              <Image
+                src={clue}
+                alt=""
+                style="width: var(--clue-size); height: var(--clue-size)"
+              />
+            );
+          })}
+          {sectionIdx !== sections.length - 1 && <Divider />}
+        </div>
+      ))
+    }
+    <div class="mb-16 text-4xl">{position}</div>
+  </div>
+</div>

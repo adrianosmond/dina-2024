@@ -1,0 +1,20 @@
+<div class="divider"></div>
+
+<style>
+  .divider {
+    height: var(--clue-size);
+    width: var(--clue-size);
+    position: relative;
+  }
+
+  .divider::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 4px;
+    top: calc(-0.2 * var(--clue-size));
+    background-color: white;
+    height: calc(100% + calc(var(--clue-size) * 0.4));
+    transform: translateX(calc(var(--clue-size) / 2.5)) rotate(25deg);
+  }
+</style>
