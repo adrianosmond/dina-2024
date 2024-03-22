@@ -1,5 +1,8 @@
 ---
-import Clue, { type Props as ClueProps } from "../components/Clue.astro";
+import Clue, {
+  type Props as ClueProps,
+  CLUE_SIZE,
+} from "../components/Clue.astro";
 
 import clue1_1 from "../clues/clue-1-1.jpg";
 import clue1_2 from "../clues/clue-1-2.jpg";
@@ -25,8 +28,6 @@ import clue4_4 from "../clues/clue-4-4.jpg";
 import clue5_1 from "../clues/clue-5-1.jpg";
 import clue5_2 from "../clues/clue-5-2.jpg";
 import clue5_3 from "../clues/clue-5-3.jpg";
-
-import "../styles/style.css";
 
 type Clue = Omit<ClueProps, "number">;
 
@@ -78,3 +79,9 @@ const clues: Clue[] = [
     {clues.map((clue, idx) => <Clue number={idx + 1} {...clue} />)}
   </body>
 </html>
+
+<style define:vars={{ clueSize: CLUE_SIZE }}>
+  :root {
+    --clue-size: calc(1px * var(--clueSize));
+  }
+</style>

@@ -5,6 +5,8 @@ import Text from "./Text.astro";
 
 type ClueSection = string | ImageMetadata;
 
+export const CLUE_SIZE = 200;
+
 export type Props = {
   number: number;
   sections: ClueSection[][];
@@ -36,12 +38,7 @@ const { number, sections, position } = Astro.props;
               );
             }
             return (
-              <Image
-                src={clue}
-                alt=""
-                width="200"
-                height="200"
-              />
+              <Image src={clue} alt="" width={CLUE_SIZE} height={CLUE_SIZE} />
             );
           })}
           {sectionIdx !== sections.length - 1 && <Divider />}
