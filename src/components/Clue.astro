@@ -38,7 +38,13 @@ const { number, sections, position } = Astro.props;
               );
             }
             return (
-              <Image src={clue} alt="" width={CLUE_SIZE} height={CLUE_SIZE} />
+              <Image
+                src={clue}
+                alt=""
+                width={CLUE_SIZE}
+                height={CLUE_SIZE}
+                loading={number === 1 ? "eager" : "lazy"}
+              />
             );
           })}
           {sectionIdx !== sections.length - 1 && <Divider />}
