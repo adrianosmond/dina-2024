@@ -19,8 +19,8 @@ const { number, sections, position } = Astro.props;
 ---
 
 <div>
-  <h2 class="mb-4 text-9xl">{number}.</h2>
-  <div class="pl-24">
+  <h2 class="mb-4 text-7xl md:text-9xl">{number}.</h2>
+  <div class="pt-8 pl-12 md:pl-24 overflow-x-auto">
     {
       sections.map((clues, sectionIdx) => (
         <div class="mb-16 flex gap-4">
